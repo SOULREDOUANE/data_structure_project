@@ -7,6 +7,8 @@ int count_length(char *);
 void ajout_white_space(int* ,char* , char* ,char* ,char* ,char* ,char* ,char* );
 void find_student(int );
 void update_student_data(int , int ,char * ,char * ,char *,float,int ,int ,int );
+
+typedef char User[80];
 void main(){
     printf("hello word!");
 //    system(color 0);
@@ -16,9 +18,12 @@ void main(){
     int mois;
     int ans;
     float moyen;
-    char nom[80];
-    char prenom[80];
-    char filliere[80];
+    User nom ;
+    // char nom[80];
+    User prenom;
+    // char prenom[80];
+    User filliere;
+    // char filliere[80];
 
  printf("Entrez svp votre matrecule:");
     scanf(" %d",&mle);
@@ -84,7 +89,7 @@ void remplissage(int mle,char* nom, char* prenom ,char* filliere,float moyen,int
     pointer_enrigestrement=fopen("enriges.txt","a");
     if (pointer_enrigestrement)
     {
-           fprintf(pointer_enrigestrement,"%d%s %s%s %s%s %s%s %f   %d %d %d\n",mle,rest_mle,nom,
+           fprintf(pointer_enrigestrement,"%d%s %s%s %s%s %s%s %.2f    %d %d %d\n",mle,rest_mle,nom,
            rest_nom,prenom,rest_prenom,filliere,rest_filliere,moyen,jour,mois,ans);
     // fprintf(pointer_enrigestrement,"%s","\n");
     fclose(pointer_enrigestrement);
@@ -159,7 +164,7 @@ void delete_student(int mle_given){
         }
         else
         {                
-            fprintf(second_pointer,"%d%s %s%s %s%s %s%s %f %d %d %d\n",mle_valeur,rest_mle,nom,
+            fprintf(second_pointer,"%d%s %s%s %s%s %s%s %.2f    %d %d %d\n",mle_valeur,rest_mle,nom,
            rest_nom,prenom,rest_prenom,filliere,rest_filliere,moyen,jour,mois,ans);
         }
         
@@ -171,24 +176,6 @@ void delete_student(int mle_given){
     remove("enriges.txt");
     rename("temperary.txt","enriges.txt");
 
-}
-// this function  return the length of a file 
-int count_length(char * Path_of_file){
-    FILE * pointer;
-    pointer=fopen(Path_of_file,"r");
-    int counter=0;
-    int i;
-    char empty[1000];
-
-    i=fgetc(pointer);
-    fgets(empty,900,pointer);
-    while(i!=EOF){
-        counter++;
-        i=fgetc(pointer);
-        fgets(empty,900,pointer);
-    }
-    fclose(pointer);
-    return counter;
 }
 // this function is not so important but it helps having the data well organazed in the file
 void ajout_white_space(int* mle,char* nom, char* prenom,char* filliere,char* rest_mle,char* rest_nom,char* rest_prenom,char* rest_filliere){
@@ -284,13 +271,13 @@ void update_student_data(int current_mle_given, int new_mle,char * given_nom,cha
         {   int * new_mleP;
             new_mleP=&new_mle;
              ajout_white_space( new_mleP, given_nom, given_prenom,given_filliere,rest_mle,rest_nom,rest_prenom,rest_filliere);
-            fprintf(second_pointer,"%d%s %s%s %s%s %s%s %f %d %d %d\n",new_mle,rest_mle,given_nom,
+            fprintf(second_pointer,"%d%s %s%s %s%s %s%s %.2f    %d %d %d\n",new_mle,rest_mle,given_nom,
            rest_nom,given_prenom,rest_prenom,given_filliere,rest_filliere,given_moyen,given_jour,given_mois,given_ans);
         }
         else
         {
           ajout_white_space( mle, nom, prenom,filliere,rest_mle,rest_nom,rest_prenom,rest_filliere);  
-          fprintf(second_pointer,"%d%s %s%s %s%s %s%s %f %d %d %d\n",*mle,rest_mle,nom,
+          fprintf(second_pointer,"%d%s %s%s %s%s %s%s %.2f    %d %d %d\n",*mle,rest_mle,nom,
            rest_nom,prenom,rest_prenom,filliere,rest_filliere,moyen,jour,mois,ans);
         }
     }

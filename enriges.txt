@@ -1,5 +1,9 @@
-3243                           rewteyt                        wetreyt                        weretr                         23.000000 12 5 2022
-2343                           rewt                           qwertre                        qwrew                          24.000000 12 5 2022
-2210714                        SOUL                           Redouane                       info                           19.000000 12 5 2022
-2210                           AARAB                          Jamal                          info                           19.000000 14 1 2023
-2210613                        aarab                          jamal                          info                           12.200000 12 12 2022
+3243                           rewteyt                        wetreyt                        weretr                         23.00    12 05 2022
+2343                           rewt                           qwertre                        qwrew                          24.00    12 05 2022
+2210714                        SOUL                           Redouane                       info                           19.00    12 05 2022
+2210                           AARAB                          Jamal                          info                           19.00    14 01 2023
+2210613                        aarab                          jamal                          info                           12.20    12 12 2022
+2210730                        bentayfor                      yassine                        info                           18.00    23 12 2022
+2210310                        oudourouch                     youssef                        info                           15.00    15 12 2022
+2210324                        aabouch                        mohamed                        info                           18.00    23 12 2022
+2210456                        lotfi                          hajar                          info                           16.00    29 12 2022
