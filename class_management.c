@@ -18,8 +18,10 @@ int count_length(char *);
 void ajout_white_space(int* ,char* , char* ,char* ,char* ,char* ,char* ,char* );
 void find_student(int );
 void update_student_data(Student student1[], int );
+void tri_student_by_moyen(  Student student[], Student student2[]);
+void diplay_of_student_ordered_moyen(Student student[],Student student2[]);
+void update_moyen(Student student1[],int current_mle_given);
 
-typedef char User[80];
 void main(){
         Student student1[1000];
         Student student[1000];
@@ -80,7 +82,6 @@ int count_length(char * Path_of_file){
     }
     fclose(pointer);
     return counter;
-
 }
 // this function can  delete a student from the file 
 void delete_student(int mle_given){
@@ -290,9 +291,6 @@ void diplay_of_student_ordered(Student student[],Student student2[]){
         student[i].mois,student[i].ans);
         printf("---------------------------------------------------------------------------------------------------------------------\n");
     }
-    
-
-
 }
 void put_all_mle_in_struct_student(Student student[]){
     FILE * open_file;
@@ -308,7 +306,7 @@ void put_all_mle_in_struct_student(Student student[]){
     fclose(open_file);
     
 }
-
+// this function merge all of the functin we build her
 void do_everything(Student student1[],Student student[],Student student2[]){
     int valeur_de_operation;
     int stop_adding_student;
@@ -316,10 +314,13 @@ void do_everything(Student student1[],Student student[],Student student2[]){
     printf("Svp choisi l'operation que vous voulez affecter:\n");
     printf("Entrer:\n");
     printf(" 1 si vous voulez ajouter des etudiant\n");
-    printf(" 2 si vous voulez faire de la mis a jour\n");
-    printf(" 3 si vous voulez affichez les etudiant par ordre croissant de leur nom\n");
+    printf(" 2 si vous voulez faire la mis a jour des donnees d'un etudiant\n");
+    printf(" 3 si vous voulez afficher les etudiant par ordre croissant de leur nom\n");
     printf(" 4 si vous voulez supprimer un etudiant\n");
-    printf(" 5 si vous  voulez cherchez un etudiant \n");
+    printf(" 5 si vous  voulez chercher un etudiant \n");
+    printf(" 6 si vous voulez afficher les etudiant par ordre croissant de leur moyen\n");
+    printf(" 7 si vous voulez faire  la mis a jour de la moyen d'un etudiant\n");
+
     printf("------------:");
     scanf("%d",&valeur_de_operation);
     switch (valeur_de_operation)
@@ -400,6 +401,7 @@ void do_everything(Student student1[],Student student[],Student student2[]){
         break;
     case 3:
         diplay_of_student_ordered(student, student2);
+        break;
     case 4:
         printf("Entrer:\n");
         printf(" 1: si vous voullez supprimer un etudiant\n");
@@ -444,11 +446,124 @@ void do_everything(Student student1[],Student student[],Student student2[]){
             printf("----------:");
             scanf("%d",&stop_adding_student);
         }
+        break;
+    case 6:
+        diplay_of_student_ordered_moyen(student,student2);
+        break;
+    case 7:
+        printf("Entrer:\n");
+        printf(" 1: si vous voullez faire la mis a jour de la moyen d'un etudiant\n");
+        printf(" 0: si vous voullez arretez\n");
+        printf("----------:");
 
+        scanf("%d",&stop_adding_student);
+        while (stop_adding_student==1)
+        {
+            printf("Donnez le matricule actuelle de l'etudiant dont vous voullez modifier:");
+            scanf("%d",&current_mle_given);
+            printf("Donnez la nouvelle moyen de l'etudiant: ");
+            scanf("%f",&student1[1].moyen);
 
+            update_moyen(student1, current_mle_given);
+
+            printf("----------------------------------\n");
+            printf("Entrer:\n");
+            printf(" 1: si vous voullez faire la mis a jour  de la moyen d'un autre etudiant\n");
+            printf(" 0: si vous voullez arretez\n");
+            printf("----------:");
+            scanf("%d",&stop_adding_student);
+        }
+        break;
     default:
         break;
     }
  
+}
+// this function sort all student by their gpa
+void tri_student_by_moyen(  Student student[], Student student2[]){
+    int number_student=count_length("enriges.txt");
+    float buffer;
+    int index_for_premutation; 
+
+    for (int i = 0; i < number_student-1; i++)
+    {
+        buffer=student[i].moyen;
+        // strcpy(buffer,student[i].nom);
+        put_struct_into_struct( student2,student,0, i);
+        index_for_premutation=i;
+        for (int j = i+1; j < number_student; j++)
+        {
+            if (buffer>student[j].moyen)
+            {
+                index_for_premutation=j;
+                buffer=student[index_for_premutation].moyen;
+            } 
+        } 
+        put_struct_into_struct( student,student,i, index_for_premutation);
+        put_struct_into_struct( student,student2,index_for_premutation, 0);
+    }
+}
+// this function display all student ordered by their gpa
+void diplay_of_student_ordered_moyen(Student student[],Student student2[]){
+
+    put_all_mle_in_struct_student( student);
+    tri_student_by_moyen(student, student2);
+
+    char rest_mle[80];
+    char rest_nom[80];
+    char rest_prenom[80];
+    char rest_filliere[80];
+    int number_student=count_length("enriges.txt");
+    for (int i = 0; i < number_student; i++)
+    {
+        ajout_white_space(&student[i].mle,student[i].nom,student[i].prenom,student[i].filliere,
+        rest_mle,rest_nom,rest_prenom,rest_filliere);
+        printf("%d%s    %s%s      %s%s        %s%s      %.2f        %d  %d  %d\n\n\n",student[i].mle,rest_mle,student[i].nom,rest_nom,student[i].prenom,rest_prenom,student[i].filliere,rest_filliere,student[i].moyen,student[i].jour,
+        student[i].mois,student[i].ans);
+        printf("---------------------------------------------------------------------------------------------------------------------\n");
+    }
+}
+
+void update_moyen(Student student1[],int current_mle_given){
+
+    char rest_mle[80];
+    char rest_nom[80];
+    char rest_prenom[80];
+    char rest_filliere[80];
+
+    FILE * main_pointer;
+    FILE * second_pointer;
+    main_pointer=fopen("enriges.txt","r");
+    second_pointer=fopen("temperary.txt","a");
+
+    int length=count_length("enriges.txt");
+    for (int i = 0; i < length; i++)
+    {
+        fscanf(main_pointer,"%d %s %s %s %f   %d %d %d",&student1[0].mle,student1[0].nom,
+        student1[0].prenom,student1[0].filliere,&student1[0].moyen,&student1[0].jour,
+        &student1[0].mois,&student1[0].ans);
+        // ajout_white_space( mle, nom, prenom,filliere,rest_mle,rest_nom,rest_prenom,rest_filliere);
+        if (current_mle_given==student1[0].mle)
+        {  
+            
+            ajout_white_space( &student1[0].mle, student1[0].nom, student1[0].prenom,student1[0].filliere,rest_mle,rest_nom,rest_prenom,rest_filliere);
+            fprintf(second_pointer,"%d%s %s%s %s%s %s%s %.2f    %d %d %d\n",student1[0].mle,rest_mle,student1[0].nom,
+            rest_nom,student1[0].prenom,rest_prenom,student1[0].filliere,rest_filliere,student1[1].moyen,student1[0].jour,student1[0].mois,student1[0].ans);
+        }
+        else
+        {
+          ajout_white_space( &student1[0].mle, student1[0].nom, student1[0].prenom,
+          student1[0].filliere,rest_mle,rest_nom,rest_prenom,rest_filliere);  
+          fprintf(second_pointer,"%d%s %s%s %s%s %s%s %.2f    %d %d %d\n",student1[0].mle,
+          rest_mle,student1[0].nom,rest_nom,student1[0].prenom,rest_prenom,student1[0].filliere,
+          rest_filliere,student1[0].moyen,student1[0].jour,student1[0].mois,student1[0].ans);
+          
+        }
+    }
+
+    fclose(main_pointer);
+    fclose(second_pointer);
+    remove("enriges.txt");
+    rename("temperary.txt","enriges.txt");
 }
 
