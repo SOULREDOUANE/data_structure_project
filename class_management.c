@@ -311,15 +311,22 @@ void do_everything(Student student1[],Student student[],Student student2[]){
     int valeur_de_operation;
     int stop_adding_student;
     int current_mle_given;
-    printf("Svp choisissez l'operation que vous voulez affecter:\n");
+    printf("                                                                  \n");
+    printf("                                                                  \n");
+    printf("                                 GESTION DE CLASS  \n");
+    printf("                                                                  \n");
+    printf("                                                                  \n");
+    printf(" Le programme suivant permet d'effectuer plusieurs opérations sur un fichier contenenat\n des données des étudiants pour pouvoir gérer la classe.\n Parmi ces opérations, on peut citer: l'ajout, la supression, la mise à jour, la recherche ... \n");
+    printf("#################################################################\n");
+    printf("Svp choisissez l'operation que vous voulez effectuer:\n");
     printf("Entrer:\n");
-    printf(" 1 si vous voulez ajouter des etudiant\n");
-    printf(" 2 si vous voulez faire la mis a jour des donnees d'un etudiant\n");
-    printf(" 3 si vous voulez afficher les etudiant par ordre croissant de leur nom\n");
+    printf(" 1 si vous voulez ajouter des etudiants\n");
+    printf(" 2 si vous voulez faire la mise à jour des données d'un etudiant\n");
+    printf(" 3 si vous voulez afficher les étudiants par ordre croissant de leur nom\n");
     printf(" 4 si vous voulez supprimer un etudiant\n");
-    printf(" 5 si vous  voulez chercher un etudiant \n");
-    printf(" 6 si vous voulez afficher les etudiant par ordre croissant de leur moyen\n");
-    printf(" 7 si vous voulez faire  la mis a jour de la moyen d'un etudiant\n");
+    printf(" 5 si vous  voulez chercher un etudiant\n");
+    printf(" 6 si vous voulez afficher les etudiant par ordre croissant de leur moyenne\n");
+    printf(" 7 si vous voulez faire  la mise à jour de la moyenne d'un etudiant\n");
 
     printf("------------:");
     scanf("%d",&valeur_de_operation);
@@ -327,8 +334,8 @@ void do_everything(Student student1[],Student student[],Student student2[]){
     {
     case 1:
         printf("Entrer:\n");
-        printf(" 1: si vous voullez ajouter  etudiant\n");
-        printf(" 0: si vous voullez arretez\n");
+        printf(" 1: si vous voullez ajouter un etudiant\n");
+        printf(" 0: si vous voullez arrêter\n");
         printf("----------:");
 
         scanf("%d",&stop_adding_student);
@@ -363,38 +370,38 @@ void do_everything(Student student1[],Student student[],Student student2[]){
         break;
     case 2:
         printf("Entrer:\n");
-        printf(" 1: si vous voullez faire la mis a jour  des donnees d'un etudiant\n");
-        printf(" 0: si vous voullez arretez\n");
+        printf(" 1: si vous voullez faire la mise a jour  des données d'un etudiant\n");
+        printf(" 0: si vous voullez arrêter\n");
         printf("----------:");
 
         scanf("%d",&stop_adding_student);
         while (stop_adding_student==1)
         {
-            printf("Donnez le matricule actuelle de l'etudiant dont vous voullez modifier:");
+            printf("Donnez le matricule actuel de l'etudiant dont vous voullez modifier les données:");
             scanf("%d",&current_mle_given);
-            printf("Donnez la nouvelle  matricule  de l'etudiant: ");
+            printf("Donnez le nouveau  matricule  de l'etudiant: ");
             scanf("%d",&student1[1].mle);
             printf("Donnez le nouveau nom de l'etudiant : ");
             scanf("%s",student1[1].nom);
             printf("Donnez le nouveau prenom de l'etudiant: ");
             scanf("%s",student1[1].prenom);
-            printf("Donnez la nouvelle filliere de l'etudiant: ");
+            printf("Donnez la nouvelle filière de l'etudiant: ");
             scanf("%s",student1[1].filliere);
             printf("Donnez la nouvelle moyenne de l'etudiant: ");
             scanf("%f",&student1[1].moyen);
-            printf("Donnez le nouveau jour dont  vous voullez l'associer a cette operation: ");
+            printf("Donnez le nouveau jour des notes de l'etudiant: ");
             scanf("%d",&student1[1].jour);
-            printf("Donnez le nouveau mois dont vous voullez l'associer a cette operation: ");
+            printf("Donnez le nouveau mois des notes de l'etudiant ");
             scanf("%d",&student1[1].mois);
-            printf("Donnez la nouvelle annee dont vous voullez l'associer a cette operation: ");
+            printf("Donnez la nouvelle année des notes de l'etudiant ");
             scanf("%d",&student1[1].ans);
 
             update_student_data(student1, current_mle_given);
 
             printf("----------------------------------\n");
             printf("Entrer:\n");
-            printf(" 1: si vous voullez faire la mis a jour  des donnees d'un autre etudiant\n");
-            printf(" 0: si vous voullez arretez\n");
+            printf(" 1: si vous voullez faire la mise à jour  des données d'un nouveau etudiant\n");
+            printf(" 0: si vous voullez arrêter\n");
             printf("----------:");
             scanf("%d",&stop_adding_student);
         }
@@ -405,7 +412,7 @@ void do_everything(Student student1[],Student student[],Student student2[]){
     case 4:
         printf("Entrer:\n");
         printf(" 1: si vous voullez supprimer un etudiant\n");
-        printf(" 0: si vous voullez arretez\n");
+        printf(" 0: si vous voullez arrêter\n");
         printf("----------:");
 
         scanf("%d",&stop_adding_student);
@@ -428,13 +435,13 @@ void do_everything(Student student1[],Student student[],Student student2[]){
 
         printf("Entrer:\n");
         printf(" 1: si vous voullez chercher un etudiant\n");
-        printf(" 0: si vous voullez arretez\n");
+        printf(" 0: si vous voullez arrêter\n");
         printf("----------:");
 
         scanf("%d",&stop_adding_student);
         while (stop_adding_student==1)
         {
-            printf("Donnez la matricule de l'etudiant que vous cherchez: ");
+            printf("Donnez le matricule de l'etudiant que vous cherchez: ");
             scanf("%d",&student1[0].mle);
 
             find_student(student1[0].mle);
@@ -442,7 +449,7 @@ void do_everything(Student student1[],Student student[],Student student2[]){
             printf("----------------------------------\n");
             printf("Entrer:\n");
             printf(" 1: si vous voullez chercher un autre etudiant\n");
-            printf(" 0: si vous voullez arretez\n");
+            printf(" 0: si vous voullez arrêter\n");
             printf("----------:");
             scanf("%d",&stop_adding_student);
         }
@@ -452,8 +459,8 @@ void do_everything(Student student1[],Student student[],Student student2[]){
         break;
     case 7:
         printf("Entrer:\n");
-        printf(" 1: si vous voullez faire la mis a jour de la moyen d'un etudiant\n");
-        printf(" 0: si vous voullez arretez\n");
+        printf(" 1: si vous voullez faire la mise à jour de la moyenne d'un etudiant\n");
+        printf(" 0: si vous voullez arrêter\n");
         printf("----------:");
 
         scanf("%d",&stop_adding_student);

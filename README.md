@@ -16,8 +16,8 @@ T.A.F. :
 Ecrire une fonction menu qui contient les options suivantes :
 <!-- Remplissage : pour la saisie des étudiants -->
 Affichage : pour lister les étudiants selon :
-Les noms (ordre croissant)
-Moyenne(ordre de mérite)
+<!-- Les noms (ordre croissant) -->
+<!-- Moyenne(ordre de mérite) -->
 Tri : pour classer les étudiants selon :
 L’ordre croissant des étudiants
 L’ordre de mérite
