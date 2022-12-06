@@ -135,7 +135,7 @@ void delete_student(int mle_given){
 // this function is not so important but it helps having the data well organazed in the file
 void ajout_white_space(int* mle,char* nom, char* prenom,char* filliere,char* rest_mle,char* rest_nom,char* rest_prenom,char* rest_filliere){
     int i;
-    int contain_value=30;
+    int contain_value=20;
     int helper=0;
     helper=contain_value-compte_nomb_chiffre(*mle);
     // printf("%d\n",compte_nomb_chiffre(*mle));
@@ -311,7 +311,7 @@ void do_everything(Student student1[],Student student[],Student student2[]){
     int valeur_de_operation;
     int stop_adding_student;
     int current_mle_given;
-    printf("Svp choisi l'operation que vous voulez affecter:\n");
+    printf("Svp choisissez l'operation que vous voulez affecter:\n");
     printf("Entrer:\n");
     printf(" 1 si vous voulez ajouter des etudiant\n");
     printf(" 2 si vous voulez faire la mis a jour des donnees d'un etudiant\n");
@@ -380,7 +380,7 @@ void do_everything(Student student1[],Student student[],Student student2[]){
             scanf("%s",student1[1].prenom);
             printf("Donnez la nouvelle filliere de l'etudiant: ");
             scanf("%s",student1[1].filliere);
-            printf("Donnez la nouvelle moyen de l'etudiant: ");
+            printf("Donnez la nouvelle moyenne de l'etudiant: ");
             scanf("%f",&student1[1].moyen);
             printf("Donnez le nouveau jour dont  vous voullez l'associer a cette operation: ");
             scanf("%d",&student1[1].jour);
